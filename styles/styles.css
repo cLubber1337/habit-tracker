@@ -1,0 +1,128 @@
+body {
+    font-family: 'Comfortaa', sans-serif;
+    background: #F3F6FD;
+    color: #000;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 123px 1fr;
+    max-width: 1012px;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    padding-top: 3rem;
+}
+
+
+.header {
+    background: #FBFAFF;
+    padding: 1.69rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.44rem;
+}
+
+.logo_title {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.habits {
+    display: flex;
+    flex-direction: column;
+    gap: 1.56rem;
+    margin-top: 3rem;
+    margin-bottom: 1.56rem;
+}
+
+.habits_item {
+    cursor: pointer;
+    width: 2.875rem;
+    height: 2.8125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.875rem;
+    background: #FFF;
+    transition: .25s ease-in-out background;
+    box-shadow: 0 8px 14px 0 rgba(62, 107, 224, 0.12);
+}
+
+.habits_item:hover {
+    background: #6A6AFB;
+
+}
+
+.habits_item_img {
+    stroke: #5051F9;
+}
+
+.habits_item:hover {
+    stroke: #FFFFFF;
+}
+
+.add-btn {
+    border-radius: 0.875rem;
+    border: 1px solid #CAD5FF;
+}
+
+/*---------------main----------------*/
+
+.main {
+    padding: 2.81rem 2.25rem 2rem 2.56rem;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.81rem;
+}
+
+.main-header_title {
+    font-size: 1.875rem;
+    font-weight: 400;
+}
+
+.main-header_progress-bar {
+    display: flex;
+    flex-direction: column;
+    max-width: 14.6875rem;
+    width: 100%;
+    margin-top: 0.44rem;
+}
+
+
+.progress-bar_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    color: #232360;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.progress-bar_value {
+    color: #768396;
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+.progress-bar_range {
+    height: 0.3125rem;
+    width: 100%;
+    border-radius: 0.25rem;
+    background: #E6E9ED;
+}
+
+.progress-bar_range::-webkit-slider-thumb {
+    background-color: red;
+}
