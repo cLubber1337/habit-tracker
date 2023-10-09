@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&display=swap"
       rel="stylesheet"
@@ -14,37 +16,73 @@
   </head>
   <body>
     <div class="container">
-      <header class="header">
+      <!----------------------- Modal --------------------->
+
+      <div class="modal">
+        <div class="overlay" onclick="closeModal()"></div>
+        <div class="modal_content">
+          <button
+            id="close-modal"
+            class="modal_close-btn"
+            onclick="closeModal()"
+          >
+            <img src="./assets/cross.svg" alt="close" />
+          </button>
+          <h2 class="modal_title">Новая привычка</h2>
+          <p class="modal_subtitle">Иконка</p>
+          <div class="modal_icons">
+            <ul class="modal_icons_list">
+              <li class="modal_icon-item active-icon">
+                <img src="./assets/dumbbell.svg" alt="dumbbell" />
+              </li>
+              <li class="modal_icon-item">
+                <img src="./assets/water.svg" alt="water" />
+              </li>
+              <li class="modal_icon-item">
+                <img src="./assets/food.svg" alt="food" />
+              </li>
+            </ul>
+          </div>
+          <form class="modal_inputs">
+            <input class="modal_input" type="text" placeholder="Название" />
+            <input
+              class="modal_input"
+              type="number"
+              placeholder="Цель в днях"
+            />
+            <button
+              id="create_habit"
+              type="submit"
+              class="add-new-day-btn modal_btn"
+            >
+              Добавить
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!----------------------- Aside --------------------->
+
+      <aside class="aside">
         <div class="logo">
           <img class="logo_img" src="./assets/logo.svg" alt="logo" />
           <h4 class="logo_title">Habbit</h4>
         </div>
-        <ul class="habits">
-          <li class="habits_item">
-            <img
-              class="habits_item_img"
-              src="./assets/dumbbell.svg"
-              alt="dumbbell"
-            />
-          </li>
-          <li class="habits_item">
-            <img
-              class="habits_item_img"
-              src="./assets/water.svg"
-              alt="dumbbell"
-            />
-          </li>
-        </ul>
-        <button class="habits_item add-btn">
+
+        <nav class="menu"></nav>
+        <button id="add-new-habit" class="menu_item menu-add-btn">
           <img src="./assets/add-btn.svg" alt="add-btn" />
         </button>
-      </header>
+      </aside>
+
+      <!----------------------- Main --------------------->
+
       <main class="main">
         <header class="main-header">
-          <h2 class="main-header_title">Отжимания</h2>
+          <h2 class="main-header_title"></h2>
           <div class="main-header_progress-bar">
             <label for="progress" class="progress-bar_title">
-              Прогресс <span class="progress-bar_value">80%</span>
+              Прогресс <span class="progress-bar_value"></span>
             </label>
             <input
               id="progress"
@@ -52,12 +90,42 @@
               class="progress-bar_range"
               min="0"
               max="100"
-              value="50"
+              value="0"
               type="range"
             />
           </div>
         </header>
+
+        <section class="section-days">
+          <ul class="days-list"></ul>
+          <form class="add-habits" onsubmit="addDays(event)">
+            <label
+              id="label-input-day"
+              for="input-add-day"
+              class="day_title add-habits_day-title"
+            >
+              День 2
+            </label>
+            <input
+              name="comment"
+              id="input-add-day"
+              class="add-habits_input"
+              type="text"
+              placeholder="Комментарий"
+              autocomplete="off"
+            />
+            <button
+              disabled
+              id="btn-add-day"
+              type="submit"
+              class="add-new-day-btn"
+            >
+              Готово
+            </button>
+          </form>
+        </section>
       </main>
     </div>
+    <script src="./scripts/app.js"></script>
   </body>
 </html>

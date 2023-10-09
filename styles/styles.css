@@ -1,7 +1,7 @@
 body {
     font-family: 'Comfortaa', sans-serif;
-    background: #F3F6FD;
     color: #000;
+    position: relative;
 }
 
 .container {
@@ -11,16 +11,17 @@ body {
     width: 100%;
     height: 100vh;
     margin: 0 auto;
-    padding-top: 3rem;
+    background: whitesmoke;
 }
 
 
-.header {
+.aside {
     background: #FBFAFF;
     padding: 1.69rem 1.75rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
 }
 
 .logo {
@@ -35,7 +36,7 @@ body {
     font-weight: 700;
 }
 
-.habits {
+.menu {
     display: flex;
     flex-direction: column;
     gap: 1.56rem;
@@ -43,7 +44,7 @@ body {
     margin-bottom: 1.56rem;
 }
 
-.habits_item {
+.menu_item {
     cursor: pointer;
     width: 2.875rem;
     height: 2.8125rem;
@@ -52,29 +53,34 @@ body {
     justify-content: center;
     border-radius: 0.875rem;
     background: #FFF;
-    transition: .25s ease-in-out background;
     box-shadow: 0 8px 14px 0 rgba(62, 107, 224, 0.12);
 }
 
-.habits_item:hover {
-    background: #6A6AFB;
+.menu_item:hover {
+    background: #7e7ef5;
+}
+
+
+.menu_item img:hover {
+    filter: brightness(0) invert(1);
 
 }
 
-.habits_item_img {
-    stroke: #5051F9;
+.active-menu {
+    background: #5051F9;
 }
 
-.habits_item:hover {
-    stroke: #FFFFFF;
+.active-menu img {
+    filter: brightness(0) invert(1);
+
 }
 
-.add-btn {
+.menu-add-btn {
     border-radius: 0.875rem;
     border: 1px solid #CAD5FF;
 }
 
-/*---------------main----------------*/
+/*-----------------------------------------main----------------------------------------*/
 
 .main {
     padding: 2.81rem 2.25rem 2rem 2.56rem;
@@ -108,6 +114,7 @@ body {
     color: #232360;
     font-size: 0.875rem;
     font-weight: 400;
+    cursor: default;
 }
 
 .progress-bar_value {
@@ -117,12 +124,316 @@ body {
 }
 
 .progress-bar_range {
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    overflow: hidden;
     height: 0.3125rem;
     width: 100%;
     border-radius: 0.25rem;
+    transition: 1s all;
+}
+
+.progress-bar_range::-webkit-slider-runnable-track {
+    height: 15px;
     background: #E6E9ED;
+    border-radius: 0.25rem;
 }
 
 .progress-bar_range::-webkit-slider-thumb {
-    background-color: red;
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: 5px;
+    height: 0.3125rem;
+    width: 15px;
+    background-color: #5051F9;
+    border-radius: 0.25rem;
+    border: 1px solid #5051F9;
+    box-shadow: -407px 0 0 400px #5051F9;
+}
+
+/*--------------------------------- days-list --------------------------------*/
+
+
+.days-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.days-list_item {
+    display: flex;
+    align-items: center;
+    border-radius: 0.625rem;
+    background: #FFF;
+}
+
+.days-list_item_title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-right: 1px solid #E7EBFB;
+    padding: 1.19rem 2.38rem 1.19rem 2.69rem;
+}
+
+.days-list_item_text {
+    color: #23235F;
+    font-size: 1rem;
+    font-weight: 500;
+    padding-left: 1.44rem;
+}
+
+.delete-btn {
+    cursor: pointer;
+    padding: 4px;
+    margin-right: 9px;
+    margin-left: auto;
+    border-radius: 6px;
+}
+
+.delete-btn:hover {
+    background-color: rgba(235, 236, 240, 0.77);
+}
+
+/*--------------------------------- Add new day form --------------------------------*/
+
+.add-habits {
+    display: flex;
+    align-items: center;
+    border-radius: 0.625rem;
+    background: #FFF;
+    padding-right: 0.31rem;
+}
+
+.day_title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-right: 1px solid #E7EBFB;
+    width: 129px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-habits_day-title {
+    height: 51px;
+}
+
+.add-habits_input {
+    padding: 11px 12px 12px 48px;
+    margin-right: 0.88rem;
+    margin-left: 1.44rem;
+    border-radius: 0.5625rem;
+    border: 1px solid #E7EBFB;
+    flex: 1;
+    background: url("../assets/message.png") no-repeat 1.25rem;
+}
+
+.add-habits_input::placeholder {
+    color: #8899A8;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.add-new-day-btn {
+    border-radius: 0.5625rem;
+    background: #EDECFE;
+    width: 7.5rem;
+    height: 2.4375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: #5051F9;
+    margin-left: auto;
+    transition: 0.25s ease-in-out all;
+}
+
+.add-new-day-btn:hover {
+    background: #6A6AFB;
+    color: white;
+}
+
+.add-new-day-btn:hover:disabled {
+    background: #EDECFE;
+    color: #5051F9;
+}
+
+.add-new-day-btn:disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+
+/*--------------------------------- Modal --------------------------------*/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 99;
+    inset: 0;
+}
+
+.modal_active {
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    z-index: -10;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+
+.modal_content {
+    position: absolute;
+    z-index: 100;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    padding: 1.37rem 1.5rem 2.62rem 1.31rem;
+    border-radius: 0.625rem;
+    background: #FFF;
+    box-shadow: 0 8px 14px 12px rgba(56, 56, 56, 0.05);
+}
+
+.modal_close-btn {
+    position: absolute;
+    top: 0.94rem;
+    right: 0.94rem;
+}
+
+.modal_title {
+    color: #000;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1.19rem;
+}
+
+.modal_subtitle {
+    color: #768396;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 0.56rem;
+}
+
+.modal_icons {
+    margin-bottom: 1.13rem;
+}
+
+.modal_icons_list {
+    display: flex;
+    justify-content: center;
+    gap: 1.56rem;
+}
+
+.modal_icon-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.875rem;
+    border: 1px solid #5051F9;
+    width: 2.875rem;
+    height: 2.8125rem;
+}
+
+.modal_inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal_input {
+    width: 379px;
+    height: 39px;
+    padding: 0.69rem 1.25rem 0.75rem 1.25rem;
+    border-radius: 0.5625rem;
+    border: 1px solid #E7EBFB;
+    background: #FFF;
+    margin-bottom: 0.38rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.modal_input::placeholder {
+    color: #8899A8;
+}
+
+.modal_btn {
+    margin-top: 0.68rem;
+    margin-left: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        padding: 1.5rem 1rem;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+
+    }
+
+    .aside {
+        flex-direction: row;
+        height: auto;
+        align-items: center;
+    }
+
+    .menu {
+        flex-direction: row;
+        gap: 0.56rem;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    .main-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .days-list_item_text {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .add-habits {
+        flex-direction: column;
+        padding: 0;
+        background: transparent;
+        margin-top: 50px;
+    }
+
+    .add-habits_input {
+        width: 100%;
+        margin: 0 0 1rem 0;
+    }
+
+    .add-habits_input::placeholder {
+        font-size: 0.75rem;
+    }
+
+    .add-new-day-btn {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .add-habits_day-title {
+        height: 40px;
+        width: 100%;
+        border-right: none;
+        border-top: 1px solid #E7EBFB;;
+    }
 }
