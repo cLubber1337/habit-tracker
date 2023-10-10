@@ -15,52 +15,68 @@
     <title>Habits tracker</title>
   </head>
   <body>
-    <div class="container">
-      <!----------------------- Modal --------------------->
+    <!----------------------- Modal --------------------->
 
-      <div class="modal">
-        <div class="overlay" onclick="closeModal()"></div>
-        <div class="modal_content">
+    <div class="modal" style="display: none">
+      <div class="overlay" onclick="toggleModal()"></div>
+      <div class="modal_content">
+        <button
+          id="close-modal"
+          class="modal_close-btn"
+          onclick="toggleModal()"
+        >
+          <img src="./assets/cross.svg" alt="close" />
+        </button>
+        <h2 class="modal_title">Новая привычка</h2>
+        <p class="modal_subtitle">Иконка</p>
+        <div class="modal_icons_list">
           <button
-            id="close-modal"
-            class="modal_close-btn"
-            onclick="closeModal()"
+            class="modal_icon-item active-icon"
+            onclick="setIcon('dumbbell', this )"
           >
-            <img src="./assets/cross.svg" alt="close" />
+            <img src="./assets/dumbbell.svg" alt="dumbbell" />
           </button>
-          <h2 class="modal_title">Новая привычка</h2>
-          <p class="modal_subtitle">Иконка</p>
-          <div class="modal_icons">
-            <ul class="modal_icons_list">
-              <li class="modal_icon-item active-icon">
-                <img src="./assets/dumbbell.svg" alt="dumbbell" />
-              </li>
-              <li class="modal_icon-item">
-                <img src="./assets/water.svg" alt="water" />
-              </li>
-              <li class="modal_icon-item">
-                <img src="./assets/food.svg" alt="food" />
-              </li>
-            </ul>
-          </div>
-          <form class="modal_inputs">
-            <input class="modal_input" type="text" placeholder="Название" />
-            <input
-              class="modal_input"
-              type="number"
-              placeholder="Цель в днях"
-            />
-            <button
-              id="create_habit"
-              type="submit"
-              class="add-new-day-btn modal_btn"
-            >
-              Добавить
-            </button>
-          </form>
+          <button onclick="setIcon('water', this )" class="modal_icon-item">
+            <img src="./assets/water.svg" alt="water" />
+          </button>
+          <button onclick="setIcon('food', this )" class="modal_icon-item">
+            <img src="./assets/food.svg" alt="food" />
+          </button>
         </div>
+        <form id="modal-form" class="modal_inputs" onsubmit="addHabit(event)">
+          <input
+            id="modal-icon-input"
+            name="icon"
+            type="text"
+            hidden
+            value="dumbbell"
+          />
+          <input
+            id="modal-title-input"
+            name="title"
+            class="modal_input"
+            type="text"
+            placeholder="Название"
+          />
+          <input
+            name="goal"
+            class="modal_input"
+            type="number"
+            min="1"
+            value="1"
+            placeholder="Цель в днях"
+          />
+          <button
+            id="create-habit-btn"
+            type="submit"
+            class="add-new-day-btn modal_btn"
+          >
+            Добавить
+          </button>
+        </form>
       </div>
-
+    </div>
+    <div class="container">
       <!----------------------- Aside --------------------->
 
       <aside class="aside">
@@ -70,7 +86,11 @@
         </div>
 
         <nav class="menu"></nav>
-        <button id="add-new-habit" class="menu_item menu-add-btn">
+        <button
+          id="add-new-habit"
+          class="menu_item menu-add-btn"
+          onclick="toggleModal()"
+        >
           <img src="./assets/add-btn.svg" alt="add-btn" />
         </button>
       </aside>

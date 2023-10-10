@@ -63,7 +63,6 @@ body {
 
 .menu_item img:hover {
     filter: brightness(0) invert(1);
-
 }
 
 .active-menu {
@@ -72,8 +71,8 @@ body {
 
 .active-menu img {
     filter: brightness(0) invert(1);
-
 }
+
 
 .menu-add-btn {
     border-radius: 0.875rem;
@@ -89,12 +88,14 @@ body {
 .main-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.81rem;
+    margin-bottom: 1.81rem
 }
 
 .main-header_title {
     font-size: 1.875rem;
     font-weight: 400;
+    margin-right: 16px;
+    word-break: break-all;
 }
 
 .main-header_progress-bar {
@@ -146,11 +147,11 @@ body {
     appearance: none;
     margin-top: 5px;
     height: 0.3125rem;
-    width: 15px;
+    width: 0;
+    left: -1px;
     background-color: #5051F9;
     border-radius: 0.25rem;
-    border: 1px solid #5051F9;
-    box-shadow: -407px 0 0 400px #5051F9;
+    box-shadow: -280px 0 0 280px #5051F9;
 }
 
 /*--------------------------------- days-list --------------------------------*/
@@ -184,7 +185,7 @@ body {
     padding-left: 1.44rem;
 }
 
-.delete-btn {
+.delete-day-btn {
     cursor: pointer;
     padding: 4px;
     margin-right: 9px;
@@ -192,7 +193,7 @@ body {
     border-radius: 6px;
 }
 
-.delete-btn:hover {
+.delete-day-btn:hover {
     background-color: rgba(235, 236, 240, 0.77);
 }
 
@@ -285,7 +286,7 @@ body {
     z-index: -10;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.45);
 }
 
 
@@ -323,14 +324,13 @@ body {
     margin-bottom: 0.56rem;
 }
 
-.modal_icons {
-    margin-bottom: 1.13rem;
-}
+
 
 .modal_icons_list {
     display: flex;
     justify-content: center;
     gap: 1.56rem;
+    margin-bottom: 1.13rem;
 }
 
 .modal_icon-item {
@@ -342,6 +342,22 @@ body {
     border: 1px solid #5051F9;
     width: 2.875rem;
     height: 2.8125rem;
+}
+
+.modal_icon-item:hover {
+    background: #7e7ef5;
+    border: none;
+}
+
+.modal_icon-item img:hover {
+    filter: brightness(0) invert(1);
+}
+
+.active-icon {
+    background: #5051F9;
+}
+.active-icon img {
+    filter: brightness(0) invert(1);
 }
 
 .modal_inputs {
@@ -435,5 +451,9 @@ body {
         width: 100%;
         border-right: none;
         border-top: 1px solid #E7EBFB;;
+    }
+
+    .main-header_title {
+        margin-right: 0;
     }
 }
